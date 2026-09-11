@@ -18,7 +18,11 @@ Gọi `call_openai` với temperature 0.0, 0.5, 1.0 và 1.5 dùng prompt
 
 **Bạn nhận thấy quy luật gì qua bốn phản hồi?** (2–3 câu)
 
-> Khi tăng temperature, độ đa dạng và tính ngẫu nhiên của câu trả lời tăng rõ rệt: ở mức 0.0 câu trả lời mang tính xác định, ngắn gọn và tập trung vào các sự thật phổ biến nhất (như xuất khẩu cà phê Robusta, hang Sơn Đoòng); ở mức 0.5 - 1.0 câu văn trở nên tự nhiên, phong phú và khai thác nhiều chủ đề văn hóa/ẩm thực khác nhau; đến mức 1.5, mô hình ưu tiên chọn các token có xác suất thấp dẫn đến câu văn bay bổng quá đà, cấu trúc ngữ pháp lủng củng và có dấu hiệu bịa đặt thông tin
+> Khi tăng temperature, độ đa dạng và tính ngẫu nhiên của câu trả lời tăng rõ rệt:
+
+- ở mức 0.0 câu trả lời mang tính xác định, ngắn gọn và tập trung vào các sự thật phổ biến nhất . ở
+- mức 0.5 - 1.0 câu văn trở nên tự nhiên, phong phú và khai thác nhiều chủ đề văn khác nhau
+- mức 1.5, mô hình ưu tiên chọn các token có xác suất thấp dẫn đến câu văn bay bổng quá đà, cấu trúc ngữ pháp lủng củng và có dấu hiệu bịa đặt thông tin
 
 ### Câu 1.2 — Chọn temperature cho sản phẩm
 
@@ -36,7 +40,7 @@ trường hợp GPT-4o xứng đáng với chi phí và một trường hợp n�
 
 > chi phí: 10000 _ 3 = 30000 lượt/ngày
 > -> 30000 _ 350 = 10.500.000 token/ngày, chi phí in/output cho gpt-4o hiện tại là $2.5/$10 / 1M token,gpt 4o-mini có chi phí $0.15/$0.6 / 1M token, vậy chi phí gpt-4o sẽ cao hơn gpt-4o-mini khoảng 16.67 lần
-> Trường hợp xứng đáng dùng gpt-4o: khi cần độ chính xác cao, khả năng hiểu ngữ cảnh phức tạp, hoặc tạo ra các phản hồi sáng tạo, ví dụ như viết nội dung marketing, phân tích dữ liệu, hoặc hỗ trợ lập trình...
+> Trường hợp nên dùng gpt-4o: khi cần độ chính xác cao, khả năng hiểu ngữ cảnh phức tạp, hoặc tạo ra các phản hồi sáng tạo, ví dụ như viết nội dung marketing, phân tích dữ liệu, hoặc hỗ trợ lập trình...
 > Trường hợp nên dùng gpt-4o-mini: khi yêu cầu phản hồi nhanh, chi phí thấp, hoặc các tác vụ đơn giản như trả lời câu hỏi cơ bản, tra cứu thông tin, hoặc hỗ trợ khách hàng với các vấn đề phổ biến
 
 ---
@@ -54,8 +58,9 @@ Gọi `chat_with_system_prompt` hai lần với cùng câu hỏi
 **Hai phản hồi khác nhau như thế nào (độ dài, từ vựng, ví dụ)? System prompt
 ảnh hưởng đến hành vi model ra sao?** (3–4 câu)
 
-> Với prompt “giáo viên tiểu học”, phản hồi thường ngắn, dùng từ vựng đơn giản và ví dụ gần gũi như một cuốn sổ chung mà nhiều người cùng giữ bản sao. Với prompt “chuyên gia tài chính”, phản hồi có thể dài và sâu hơn, sử dụng các thuật ngữ như sổ cái phân tán, hàm băm, cơ chế đồng thuận, tính bất biến và smart contract.
-> System prompt định hướng vai trò, đối tượng người đọc, mức độ chi tiết, phong cách diễn đạt và loại ví dụ mà model lựa chọn, nhưng không bảo đảm tuyệt đối mọi phản hồi đều khác nhau hoàn toàn.
+> Với prompt “giáo viên tiểu học”, phản hồi thường ngắn, dùng từ vựng đơn giản và ví dụ gần gũi như một cuốn sổ chung mà nhiều người cùng giữ bản sao.
+> Với prompt “chuyên gia tài chính”, phản hồi có thể dài và sâu hơn, sử dụng các thuật ngữ như sổ cái phân tán, hàm băm, cơ chế đồng thuận, tính bất biến và smart contract.
+> System prompt định hướng vai trò, đối tượng người đọc, mức độ chi tiết, phong cách diễn đạt và loại ví dụ mà model lựa chọn
 
 ### Câu 2.2 — tiktoken vs đếm từ
 
@@ -77,7 +82,7 @@ nhiều token hơn tiếng Anh cùng độ dài?**
 non-streaming lại phù hợp hơn?** (1 đoạn văn)
 
 > Streaming quan trọng nhất khi người dùng cần phản hồi nhanh, chẳng hạn như trong các ứng dụng chat trực tiếp, nơi mà việc hiển thị từng phần của câu trả lời ngay lập tức giúp cải thiện trải nghiệm người dùng.
-> Non-streaming lại phù hợp hơn trong các tình huống mà độ chính xác và toàn vẹn của phản hồi là quan trọng, chẳng hạn như khi gửi dữ liệu nhạy cảm hoặc khi cần phân tích toàn bộ câu trả lời trước khi hiển thị cho người dùng
+> Non-streaming phù hợp hơn trong các tình huống mà độ chính xác và toàn vẹn của phản hồi là quan trọng, VD: khi gửi dữ liệu nhạy cảm hoặc khi cần phân tích toàn bộ câu trả lời trước khi hiển thị cho người dùng
 
 ### Câu 3.2 — Vì sao backoff theo cấp số nhân?
 
@@ -86,7 +91,7 @@ thế gì khi API bị quá tải? Điều gì xảy ra nếu hàng nghìn clien
 với delay cố định giống nhau?**
 
 > Exponential backoff giúp giảm tải cho server bằng cách tăng dần thời gian chờ giữa các lần retry, từ đó giảm số lượng yêu cầu đồng thời và tránh tình trạng khi hàng nghìn client cùng retry với delay cố định giống nhau.
-> Nếu tất cả client retry với delay cố định, server có thể bị quá tải và dẫn đến tình trạng từ chối dịch vụ (DoS), trong khi exponential backoff giúp phân tán các yêu cầu theo thời gian, tăng khả năng thành công của các retry và cải thiện hiệu suất tổng thể của hệ thống.
+> Nếu tất cả client retry với delay cố định, server có thể bị quá tải và dẫn đến DoS, trong khi exponential backoff giúp phân tán các yêu cầu theo thời gian, tăng khả năng thành công của các retry và cải thiện hiệu suất tổng thể
 
 ---
 
